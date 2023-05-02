@@ -2,10 +2,7 @@ package com.orderservice.service;
 
 import com.orderservice.entity.Order;
 import com.orderservice.feignClient.InventoryService;
-import com.orderservice.model.InventoryRequest;
-import com.orderservice.model.InventoryResponse;
-import com.orderservice.model.OrderRequest;
-import com.orderservice.model.OrderResponse;
+import com.orderservice.model.*;
 import com.orderservice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +17,7 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.time.Instant;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -105,4 +103,16 @@ public class OrderService {
 
     }
 
+    public void updateOrder(String orderId, OrderUpdate orderUpdate) {
+        Optional<Order> optionalOrder = orderRepository.findById(orderId);
+
+        if (optionalOrder.isPresent()){
+            Order order = optionalOrder.get();
+
+            order.setQuantity(orderUpdate.getQuantity());
+            order.setTotalAmount(orderUpdate.getTotalAmount());
+
+            orderRepository.save(order);
+        }
+    }
 }

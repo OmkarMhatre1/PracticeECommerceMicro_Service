@@ -1,6 +1,7 @@
 package com.inventoryservice.service;
 
 import com.inventoryservice.entity.Inventory;
+import com.inventoryservice.exception.ProductQuantityException;
 import com.inventoryservice.model.InventoryRequest;
 import com.inventoryservice.model.InventoryResponse;
 import com.inventoryservice.model.InventoryUpdate;

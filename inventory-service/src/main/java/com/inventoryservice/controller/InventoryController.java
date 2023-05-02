@@ -4,7 +4,7 @@ import com.inventoryservice.model.InventoryRequest;
 import com.inventoryservice.model.InventoryResponse;
 import com.inventoryservice.model.InventoryUpdate;
 import com.inventoryservice.service.InventoryService;
-import com.inventoryservice.service.ProductQuantityException;
+import com.inventoryservice.exception.ProductQuantityException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
